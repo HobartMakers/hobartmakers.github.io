@@ -6,11 +6,32 @@
   text-align: center;
 }
 
-.voffset-20 {
+.header, .voffset-20 {
  margin-top : 20px;
 }
 
 .header-image {
  width: 400px;
  height: 215px;
+}
+
+.footer {
+ margin-bottom:20px;
+}
+
+
+/* Green text Nav Pills, inverted for .active ones */
+.nav-pills a:hover {
+    color: #4E9A06;
+}
+.nav-pills .active a {
+    background-color:#4E9A06 !important;
+}
+.nav-pills .active a:hover {
+    color: #4E9A06;
+}
+.nav>li>a,
+.nav>li>a:hover,
+.nav>li>a:focus {
+    color: #4E9A06;
 }
