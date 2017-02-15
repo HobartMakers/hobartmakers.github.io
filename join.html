@@ -1,6 +1,3 @@
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -39,38 +36,104 @@
 
         <h1>Join Hobart Makers</h1>
 
-        <p>Our suggested payment is $20/month</p>
+        <p>Thank you for joining Hobart Makers Inc. We'll do our best to make you feel welcome, listen to your feedback, and to help you make stuff :smiley:. Your support is very much appreciated.</p>
 
-        <p><small>Note: The minimum payment to retain voting rights at general meetings is $10/month</small></p>
 
-        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+        <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
 
+        <!-- PayPal hidden fields -->
         <input type="hidden" name="cmd" value="_xclick-subscriptions">
         <input type="hidden" name="business" value="payments@hobartmakers.com">
         <input type="hidden" name="lc" value="AU">
         <input type="hidden" name="item_name" value="Hobart Makers Membership">
         <input type="hidden" name="src" value="1">
-
-        <input type="text" name="a3" value="20.00"> AUD per
-        <input type="hidden" name="p3" value="1">
-        <select name="t3">
-            <option value="M">Month</option>
-            <option value="Y">Year</option>
-        </select>
-
+        <input type="hidden" name="p3" value="1"> <!-- pay per N units of time-->
         <input type="hidden" name="currency_code" value="AUD">
         <input type="hidden" name="bn" value="PP-SubscriptionsBF:btn_subscribeCC_LG.gif:NonHosted">
 
-        <p>
-        <input type="image" src="https://www.paypalobjects.com/en_AU/i/btn/btn_subscribeCC_LG.gif" border="0" name="submit" alt="PayPal – The safer, easier way to pay online!">
-        </p>
 
-        <img alt="" border="0" src="https://www.paypalobjects.com/en_AU/i/scr/pixel.gif" width="1" height="1">
+
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="hidden" name="on0" value="Name">
+            <input type="text" name="os0" maxlength="60" class="form-control" id="name" placeholder="Name">
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="hidden" name="on1" value="Email">
+            <input type="email" name="os1" maxlength="60" class="form-control" id="email" placeholder="Email">
+        </div>
+
+
+        <div class="form-group">
+
+            <label>Pay what you want!</label>
+
+            <div>
+
+                <div class="btn-group" data-toggle="buttons">
+                    <label class="btn btn-default" id="price1Button">
+                        <input type="radio" name="a3" id="price1Radio" autocomplete="off" value="10" />
+                        <span id="price1Wording">$10</span>
+                    </label>
+
+                    <label class="btn btn-default active" id="price2Button">
+                        <input type="radio" name="a3" id="price2Radio" autocomplete="off" value="20" checked="checked" />
+                        <span id="price2Wording">$20</span>
+                    </label>
+
+                    <label class="btn btn-default" id="price3button">
+                        <input type="radio" name="a3" id="price3Radio" autocomplete="off" value="30" />
+                        <span id="price3Wording">$30</span>
+                    </label>
+
+                    <label class="btn btn-default" id="customPriceButton">
+                        <input type="radio" name="a3" id="customPriceRadio" autocomplete="off" value="">
+                        <span id="customPriceWording">Custom</span>
+                    </label>
+                    <input type="text" id="customPriceInput" autocomplete="off" value="" size="3" style="display:none" />
+                </div>
+
+                <span style="padding-left:10px; padding-right:10px">every</span>
+
+                <div class="btn-group" data-toggle="buttons">
+                    <label class="btn btn-default active" id="monthButton">
+                        <input type="radio" name="t3" id="monthButton" autocomplete="off" value="M" checked="checked">
+                        <span id="monthButtonWording">Month</span>
+                    </label>
+
+                    <label class="btn btn-default" id="yearButton">
+                        <input type="radio" name="t3" id="yearRadio" autocomplete="off" value="Y">
+                        <span id="yearButtonWording">Year</span>
+                    </label>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="panel panel-danger" id="socialMember">
+          <div class="panel-heading">Some small print</div>
+          <div class="panel-body">
+            <p>You may become a social member regardless of how much you pay, but to become an ordinary member, you will need to pay a minimum of $10/month or $120/year.</p>
+
+            <p>All members (social and ordinary) can take part in all activities, with the following exception: social members may not a) vote at general meetings, or b) join the management committee.</p>
+
+            <p>Social members must also pay $5 extra towards each paid workshop that they attend, to help cover our operating costs.</p>
+
+            <p>Thank you!</p>
+          </div>
+        </div>
+
+        <p>
+            <input type="submit" value="Subscribe with PayPal" class="btn btn-success" />
+        </p>
 
         </form>
 
       </div>
     </div>
+
     <div class="footer row">
       <div class="col-md-2 col-md-offset-5 text-center">
         <a href="https://fb.me/HobartMakers"><img src="img/social-facebook.png" class="socmed-icon"></a>
@@ -79,16 +142,85 @@
       </div>
     </div>
   </div>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <script type="text/javascript">
+
+    function calculateSocial() {
+        var amount = parseFloat($('input[name="a3"]:checked').attr('value'));
+        var period = $('input[name="t3"]:checked').attr('value');
+   
+        if (period == "M") {
+            if (amount < 10) {
+                $('#socialMember').show();
+            } else {
+                $('#socialMember').hide();
+            }
+        } else if (period == "Y") {
+            if (amount < 120) {
+                $('#socialMember').show();
+            } else {
+                $('#socialMember').hide();
+            }
+        } 
+    }
+
      $(document).ready(function() {
+
         $("p, h3").each(function() {
             var original = $(this).html();
-            // use .shortnameToImage if only converting shortnames (for slightly better performance)
             var converted = emojione.toImage(original);
             $(this).html(converted);
         });
+
+        $('#price1Radio, #price2Radio, #price3Radio, #customPriceRadio').on('change', function() {
+
+            var id = $('input[name="a3"]:checked').attr('id');
+
+            if (id == 'customPriceRadio') {
+                $('#customPriceInput').show();
+                $('#customPriceInput').focus(); // This appears not to work. Why might that be?
+            } else {
+                $('#customPriceInput').hide();
+            }
+
+            calculateSocial();
+        });
+
+        $('#monthButton').on('change', function () {
+            $('#price1Radio').prop('value', '10');
+            $('#price1Wording').text('$10');
+
+            $('#price2Radio').prop('value', '20');
+            $('#price2Wording').text('$20');
+
+            $('#price3Radio').prop('value', '30');
+            $('#price3Wording').text('$30');
+
+            calculateSocial();
+        });
+
+        $('#yearButton').on('change', function () {
+            $('#price1Radio').prop('value', '120');
+            $('#price1Wording').text('$120');
+
+            $('#price2Radio').prop('value', '240');
+            $('#price2Wording').text('$240');
+
+            $('#price3Radio').prop('value', '360');
+            $('#price3Wording').text('$360');
+
+            calculateSocial();
+        });
+
+        $('#customPriceInput').on('change keyup', function () {
+            $('#customPriceRadio').prop('value', $(this).val());
+            calculateSocial();
+        });
+                
+        $('#socialMember').hide(); // If javascript is disabled, show this by default
+        
     });
 </script>
 </body>
