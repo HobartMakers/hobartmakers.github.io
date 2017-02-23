@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Hobart Makers</title>
+    <link rel="shortcut icon" href="/img/favicon.ico" type="image/vnd.microsoft.icon" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/bootstrap-flat.css" >
+    <link rel="stylesheet" href="css/site.css">
+    <script src="https://cdn.jsdelivr.net/emojione/2.2.7/lib/js/emojione.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/emojione/2.2.7/assets/css/emojione.min.css"/>
+</head>
+<body>
+  <div class="container">
+
+    <div class="header clearfix">
+        <div class="col-md-8 col-md-offset-2">
+            <nav>
+                <ul class="nav nav-pills pull-right">
+                    <li role="presentation"><a href="index.html">FAQ</a></li>
+                    <li role="presentation"><a href="https://hobartmakers.tidyhq.com/public/events">Events</a></li>
+                    <li role="presentation"><a href="join.html">Join</a></li>
+                    <li role="presentation" class="active"><a href="donate.html">Donate</a></li>
+                </ul>
+            </nav>
+            <h3 style="display:none;">Hobart Makers Inc.</h3>
+            <img src="img/HobartMakersMainLogo.png" width="220" style="margin-left: -10px" />
+        </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2 voffset-20">
+
+        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+            <input type="hidden" name="cmd" value="_donations">
+            <input type="hidden" name="business" value="payments@hobartmakers.com">
+            <input type="hidden" name="lc" value="AU">
+            <input type="hidden" name="item_name" value="Hobart Makers Inc.">
+            <input type="hidden" name="currency_code" value="AUD">
+            <input type="hidden" name="bn" value="PP-DonationsBF:btn_donateCC_LG.gif:NonHosted">
+            <input type="submit" class="btn btn-primary btn-lg" value="Donate via PayPal"/>
+        </form>
+
+      </div>
+    </div>
+    <div class="footer row">
+      <div class="col-md-2 col-md-offset-5 text-center">
+        <a href="https://fb.me/HobartMakers"><img src="img/social-facebook.png" class="socmed-icon"></a>
+        <a href="http://twitter.com/HobartMakers"><img src="img/social-twitter.png" class="socmed-icon"></a>
+        <a href="mailto:info@hobartmakers.com"><img src="img/social-mail.png" class="socmed-icon"></a>
+      </div>
+    </div>
+  </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script type="text/javascript">
+     $(document).ready(function() {
+        $("p, h3").each(function() {
+            var original = $(this).html();
+            // use .shortnameToImage if only converting shortnames (for slightly better performance)
+            var converted = emojione.toImage(original);
+            $(this).html(converted);
+        });
+    });
+</script>
+</body>
+</html>
