@@ -36,3 +36,8 @@
 .nav>li>a:focus {
     color: #4E9A06;
 }
+
+
+.btn-primary.active { 
+    background-colour: #5cb85c;
+}
